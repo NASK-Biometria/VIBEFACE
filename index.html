@@ -922,9 +922,20 @@
     <section class="section">
         <h3>Benchmark Results</h3>
         <p>Comprehensive evaluation across face detection, verification, age estimation, and gender classification tasks.</p>
-
-        <!-- Results table -->
-        <h1>TBA</h1>
+		
+		<section class="section">
+		  <div style="text-align: center;">
+			<details style="display: inline-block; text-align: left; border: 1px solid rgba(255,255,255,0.2); border-radius: 10px; padding: 2rem; background: rgba(255,255,255,0.05); width: 90%; max-width: 1400px; box-sizing: border-box;">
+			  <summary style="cursor: pointer; font-size: 1.8rem; font-weight: 500; color: #fff; text-align: center;">IDENTIFICATION BENCHMARKS <span style="font-size: 1rem; opacity: 0.7;">(click to expand)</span></summary>
+			  <div id="identification_benchmark_charts" style="display: flex; flex-direction: column; gap: 2rem; width: 100%; box-sizing: border-box;">
+				<div id="method_per_scenario" style="width: 100%; max-width: 100%; height: 450px;"></div>
+				<div id="gender_bias_chart" style="width: 100%; max-width: 100%; height: 450px;"></div>
+				<div id="age_group_chart" style="width: 100%; max-width: 100%; height: 450px;"></div>
+				<div id="race_category_chart" style="width: 100%; max-width: 100%; height: 450px;"></div>
+			  </div>
+			</details>
+		  </div>
+		</section>
     </section>
 
     <!-- Access -->
@@ -950,6 +961,11 @@
 		<i>This research was supported by the Polish Ministry of Digital Affairs through targeted funding from the state budget under grant no. <b>6/WII/DBI/2024</b></i>.
     </footer>
 
+
+	<script type="text/javascript">
+	  window.addEventListener('resize', drawIdentificationBenchmarks);
+	  google.charts.setOnLoadCallback(drawIdentificationBenchmarks);
+	</script>
     <script>
         // Smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -1069,10 +1085,10 @@
     // Pie chart: Race distribution
     const raceData = google.visualization.arrayToDataTable([
       ['Race', 'Participants'],
+	  ['African', 13],
       ['Caucasian', 13],
-      ['African', 13],
+	  ['East Asian', 12],
       ['South Asian', 12],
-      ['East Asian', 12]
     ]);
 
     const raceOptions = {
@@ -1151,5 +1167,103 @@ const ageOptions = {
     ageChart.draw(ageData, ageOptions);
   }
 </script>
+<script type="text/javascript">
+  google.charts.setOnLoadCallback(drawIdentificationBenchmarks);
+
+  function drawIdentificationBenchmarks() {
+    // Chart 1: Method vs Scenario
+    const scenarioData = google.visualization.arrayToDataTable([
+      ['Scenario', 'MTCNN', 'RetinaFace', 'MediaPipe'],
+      ['1-10', 0.769, 1.000, 0.979],
+      ['12', 0.861, 0.999, 0.976],
+      ['13', 0.826, 0.997, 0.964],
+      ['14', 0.954, 1.000, 0.980],
+      ['15', 0.955, 1.000, 0.986],
+      ['16', 0.967, 1.000, 0.979],
+    ]);
+    const scenarioOptions = {
+      title: 'Face Detection Accuracy per Scenario',
+      backgroundColor: 'transparent',
+      legend: { position: 'top', textStyle: { color: '#fff' } },
+      titleTextStyle: { color: '#fff' },
+      hAxis: { title: 'Scenario', textStyle: { color: '#fff' }, titleTextStyle: { color: '#fff' } },
+      vAxis: { title: 'Accuracy', textStyle: { color: '#fff' }, titleTextStyle: { color: '#fff' }, minValue: 0.7, maxValue: 1.0 },
+      colors: ['#ff6666', '#66cc66', '#6699ff'],
+      annotations: {
+        alwaysOutside: true,
+        textStyle: { color: '#fff', auraColor: 'none', fontSize: 12 }
+      }
+    };
+    new google.visualization.ColumnChart(document.getElementById('method_per_scenario')).draw(scenarioData, scenarioOptions);
+
+    // Chart 2: Gender Bias
+    const genderData = google.visualization.arrayToDataTable([
+      ['Method', 'Female', 'Male'],
+      ['MTCNN', 0.865, 0.805],
+	  ['MediaPipe', 0.989, 0.961],
+      ['RetinaFace', 0.998, 0.996],
+    ]);
+    const genderOptions = {
+      title: 'Face Detection Accuracy by Gender',
+      backgroundColor: 'transparent',
+      legend: { position: 'top', textStyle: { color: '#fff' } },
+      titleTextStyle: { color: '#fff' },
+      hAxis: { title: 'Method', textStyle: { color: '#fff' }, titleTextStyle: { color: '#fff' } },
+      vAxis: { title: 'Accuracy', minValue: 0.7, maxValue: 1.0, textStyle: { color: '#fff' }, titleTextStyle: { color: '#fff' } },
+      colors: ['#ff99cc', '#99ccff'],
+      annotations: {
+        alwaysOutside: true,
+        textStyle: { color: '#fff', auraColor: 'none', fontSize: 12 }
+      }
+    };
+    new google.visualization.ColumnChart(document.getElementById('gender_bias_chart')).draw(genderData, genderOptions);
+
+    // Chart 3: Age Group Accuracy
+    const ageData = google.visualization.arrayToDataTable([
+      ['Method', '18–30', '31–50', '51–70'],
+      ['MTCNN', 0.815, 0.883, 0.805],
+	  ['MediaPipe', 0.956, 0.988, 0.983],
+      ['RetinaFace', 0.994, 0.999, 0.997],
+    ]);
+    const ageOptions = {
+      title: 'Face Detection Accuracy by Age Group',
+      backgroundColor: 'transparent',
+      legend: { position: 'top', textStyle: { color: '#fff' } },
+      titleTextStyle: { color: '#fff' },
+      hAxis: { title: 'Method', textStyle: { color: '#fff' }, titleTextStyle: { color: '#fff' } },
+      vAxis: { title: 'Accuracy', minValue: 0.7, maxValue: 1.0, textStyle: { color: '#fff' }, titleTextStyle: { color: '#fff' } },
+      colors: ['#ffa07a', '#20b2aa', '#9370db'],
+      annotations: {
+        alwaysOutside: true,
+        textStyle: { color: '#fff', auraColor: 'none', fontSize: 12 }
+      }
+    };
+    new google.visualization.ColumnChart(document.getElementById('age_group_chart')).draw(ageData, ageOptions);
+
+    // Chart 4: Race Category Accuracy
+    const raceData = google.visualization.arrayToDataTable([
+      ['Method', 'African', 'Caucasian', 'East Asian', 'South Asian'],
+      ['MTCNN', 0.749, 0.831, 0.906, 0.861],
+	  ['MediaPipe', 0.987, 0.950, 0.990, 0.976],
+      ['RetinaFace', 0.998, 0.991, 0.996, 0.996],
+    ]);
+    const raceOptions = {
+      title: 'Face Detection Accuracy by Race Category',
+      backgroundColor: 'transparent',
+      legend: { position: 'top', textStyle: { color: '#fff' } },
+      titleTextStyle: { color: '#fff' },
+      hAxis: { title: 'Method', textStyle: { color: '#fff' }, titleTextStyle: { color: '#fff' } },
+      vAxis: { title: 'Accuracy', minValue: 0.7, maxValue: 1.0, textStyle: { color: '#fff' }, titleTextStyle: { color: '#fff' } },
+      colors: ['#ffcc66', '#66ff99', '#6699cc', '#cc66ff'],
+      annotations: {
+        alwaysOutside: true,
+        textStyle: { color: '#fff', auraColor: 'none', fontSize: 12 }
+      }
+    };
+    new google.visualization.ColumnChart(document.getElementById('race_category_chart')).draw(raceData, raceOptions);
+  }
+</script>
+
+
 </body>
 </html>
