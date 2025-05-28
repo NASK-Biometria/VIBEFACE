@@ -1089,43 +1089,65 @@
     raceChart.draw(raceData, raceOptions);
 
     // Bar chart: Age and gender distribution
-	const ageData = google.visualization.arrayToDataTable([
-	  ['Age group', 'Male', { role: 'annotation' }, 'Female', { role: 'annotation' }],
-	  ['18-30', 9, '9', 10, '10'],
-	  ['31-50', 8, '8', 9, '9'],
-	  ['51-70', 8, '8', 6, '6']
-	]);
+const ageData = google.visualization.arrayToDataTable([
+  ['Age Group', 'Male', { role: 'annotation' }, 'Female', { role: 'annotation' }],
+  ['18–30', -9, '9', 10, '10'],
+  ['31–50', -8, '8', 9, '9'],
+  ['51–70', -8, '8', 6, '6']
+]);
 
-	const ageOptions = {
-	  title: 'Age & Gender Distribution',
-	  titleTextStyle: { color: '#fff', fontSize: 18 },
-	  backgroundColor: 'transparent',
-	  isStacked: true,
-	  hAxis: {
-		title: 'Participants number',
-		titleTextStyle: { color: '#fff' },
-		textStyle: { color: '#fff' },
-		gridlines: { color: 'rgba(255,255,255,0.1)' }
-	  },
-	  vAxis: {
-		title: 'Age group in years',
-		titleTextStyle: { color: '#fff' },
-		textStyle: { color: '#fff' }
-	  },
-	  legend: { position: 'top', textStyle: { color: '#fff' } },
-	  chartArea: { left: 100, width: '75%', height: '70%' },
-	  colors: ['#66ccff', '#ff8888'],
-	  annotations: {
-		textStyle: {
-		  fontSize: 14,
-		  color: '#fff',
-		  auraColor: 'none'
-		}
-	  }
-	};
-
+const ageOptions = {
+  title: 'Demographic Pyramid: Age & Gender',
+  titleTextStyle: { color: '#fff', fontSize: 18 },
+  backgroundColor: 'transparent',
+  isStacked: true,
+  hAxis: {
+    title: 'Participants',
+    textStyle: { color: '#fff' },
+    titleTextStyle: { color: '#fff' },
+    gridlines: { color: 'rgba(255,255,255,0.1)' },
+    viewWindow: { min: -12, max: 12 },
+    ticks: [
+      { v: -10, f: '10' },
+      { v: -5, f: '5' },
+      { v: 0, f: '0' },
+      { v: 5, f: '5' },
+      { v: 10, f: '10' }
+    ]
+  },
+  vAxis: {
+    title: 'Age Group',
+    titleTextStyle: { color: '#fff' },
+    textStyle: { color: '#fff' },
+    direction: 1
+  },
+  legend: {
+    position: 'top',
+    textStyle: { color: '#fff' },
+    alignment: 'center'
+  },
+  chartArea: {
+    left: 100,
+    width: '75%',
+    height: '70%',
+    top: 60
+  },
+  colors: ['#66ccff', '#ff8888'],
+  bar: { groupWidth: '75%' },
+  annotations: {
+    textStyle: {
+      color: '#fff',
+      fontSize: 12,
+      auraColor: 'none'
+    }
+  },
+  tooltip: {
+    trigger: 'none'
+  }
+};
 
     const ageChart = new google.visualization.BarChart(document.getElementById('age_gender_chart'));
+	
     ageChart.draw(ageData, ageOptions);
   }
 </script>
