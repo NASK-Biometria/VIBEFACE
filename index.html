@@ -703,6 +703,238 @@
 			  transform: translate(0);
 		   }
 		}
+		
+		.video-container {
+            max-width: 1400px;
+            margin: 2rem auto;
+            background: rgba(255,255,255,0.05);
+            border-radius: 20px;
+            padding: 2rem;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .player-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .video-section {
+            position: relative;
+        }
+
+		.video-wrapper {
+			position: relative;
+			background: #000;
+			border-radius: 15px;
+			overflow: hidden;
+			display: inline-block;
+		}
+
+		#videoPlayer {
+			height: 70vh;
+			width: auto;
+			display: block;
+		}
+
+        .overlay-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .chart-section {
+            background: rgba(255,255,255,0.03);
+            border-radius: 15px;
+            padding: 1.5rem;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .controls {
+            background: rgba(255,255,255,0.03);
+            border-radius: 15px;
+            padding: 2rem;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .frame-slider {
+            width: 100%;
+            margin: 1rem 0;
+            appearance: none;
+            height: 8px;
+            border-radius: 5px;
+            background: rgba(255,255,255,0.2);
+            outline: none;
+        }
+
+        .frame-slider::-webkit-slider-thumb {
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #3498db;
+            cursor: pointer;
+            border: 2px solid #fff;
+            box-shadow: 0 2px 10px rgba(52, 152, 219, 0.5);
+        }
+
+        .frame-slider::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #3498db;
+            cursor: pointer;
+            border: 2px solid #fff;
+            box-shadow: 0 2px 10px rgba(52, 152, 219, 0.5);
+        }
+
+        .frame-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .score-display {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .score-card {
+            background: rgba(255,255,255,0.05);
+            border-radius: 10px;
+            padding: 1rem;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .score-label {
+            font-size: 0.8rem;
+            opacity: 0.7;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .score-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .score-bar {
+            height: 4px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .score-fill {
+            height: 100%;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .arcface { color: #3498db; }
+        .magface { color: #e74c3c; }
+
+        .arcface .score-fill { background: #3498db; }
+        .magface .score-fill { background: #e74c3c; }
+
+        .toggle-buttons {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .toggle-btn {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 10px;
+            padding: 0.8rem;
+            color: #fff;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.8rem;
+            text-align: center;
+        }
+
+        .toggle-btn:hover {
+            background: rgba(255,255,255,0.2);
+        }
+
+        .toggle-btn.active {
+            background: #3498db;
+            border-color: #3498db;
+            transform: scale(1.05);
+        }
+
+        .pose-indicator {
+            background: rgba(255,255,255,0.03);
+            border-radius: 10px;
+            padding: 1rem;
+            margin-top: 1rem;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .pose-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.5rem;
+            text-align: center;
+        }
+
+        .pose-item {
+            font-size: 0.8rem;
+        }
+
+        .pose-value {
+            font-weight: bold;
+            font-size: 1rem;
+            margin-top: 0.25rem;
+        }
+
+        .chart-container {
+            height: 300px;
+            position: relative;
+        }
+
+        @media (max-width: 768px) {
+            .player-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .toggle-buttons {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .status-indicator {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: rgba(0,0,0,0.7);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            z-index: 10;
+        }
+
+        .face-detected {
+            color: #27ae60;
+        }
+
+        .no-face {
+            color: #e74c3c;
+        }
     </style>
 </head>
 <body>
@@ -918,6 +1150,89 @@
 					  </div>
     </section>
 
+
+
+<div class="video-container">
+        <h2 style="text-align: center; margin-bottom: 2rem; font-weight: 300;">Interactive Biometric Analysis</h2>
+        
+        <div class="player-grid">
+            <div class="video-section">
+                <div class="video-wrapper">
+                    <video id="videoPlayer" muted>
+                        <source src="videos/video.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <canvas id="overlayCanvas" class="overlay-canvas"></canvas>
+                    <div id="statusIndicator" class="status-indicator">
+                        <span id="statusText">Loading...</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chart-section">
+                <h3 style="margin-bottom: 1rem; font-size: 1.2rem;">Similarity Timeline</h3>
+                <div class="chart-container">
+                    <canvas id="similarityChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div class="controls">
+            <div class="frame-info">
+                <span>Frame: <span id="currentFrame">0</span></span>
+                <span>Time: <span id="currentTime">0.00s</span></span>
+                <span>Total: <span id="totalFrames">--</span></span>
+            </div>
+            
+            <input type="range" id="frameSlider" class="frame-slider" min="0" max="43" value="0" step="1">
+            
+            <div class="score-display">
+                <div class="score-card arcface">
+                    <div class="score-label">ArcFace</div>
+                    <div class="score-value" id="arcfaceScore">0.000</div>
+                    <div class="score-bar">
+                        <div class="score-fill" id="arcfaceFill" style="width: 0%"></div>
+                    </div>
+                </div>
+                <div class="score-card magface">
+                    <div class="score-label">MagFace</div>
+                    <div class="score-value" id="magfaceScore">0.000</div>
+                    <div class="score-bar">
+                        <div class="score-fill" id="magfaceFill" style="width: 0%"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="toggle-buttons">
+                <button class="toggle-btn active" data-layer="scores">📊 Scores</button>
+                <button class="toggle-btn" data-layer="facebox">📦 Face Box</button>
+                <button class="toggle-btn" data-layer="pose">🎯 Head Pose</button>
+            </div>
+
+            <div class="pose-indicator">
+                <h4 style="margin-bottom: 0.5rem; font-size: 1rem;">Head Pose</h4>
+                <div class="pose-grid">
+                    <div class="pose-item">
+                        <div>Pitch</div>
+                        <div class="pose-value" id="pitchValue">0°</div>
+                    </div>
+                    <div class="pose-item">
+                        <div>Yaw</div>
+                        <div class="pose-value" id="yawValue">0°</div>
+                    </div>
+                    <div class="pose-item">
+                        <div>Roll</div>
+                        <div class="pose-value" id="rollValue">0°</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
     <!-- Benchmarks -->
     <section class="section">
         <h3>Benchmark Results</h3>
@@ -934,6 +1249,82 @@
 				<div id="race_category_chart" style="width: 100%; max-width: 100%; height: 450px;"></div>
 			  </div>
 			</details>
+			
+			<details style="display: inline-block; text-align: left; border: 1px solid rgba(255,255,255,0.2); border-radius: 10px; padding: 2rem; background: rgba(255,255,255,0.05); width: 90%; max-width: 1400px; box-sizing: border-box;">
+			  <summary style="cursor: pointer; font-size: 1.8rem; font-weight: 500; color: #fff; text-align: center;">AGE/GENDER ESTIMATION BENCHMARKS <span style="font-size: 1rem; opacity: 0.7;">(click to expand)</span></summary>
+			  <div id="identification_benchmark_charts" style="display: flex; flex-direction: column; gap: 2rem; width: 100%; box-sizing: border-box;">
+				<p style="text-align: center; font-size: 0.9rem; opacity: 0.7;">
+				<i>We are using the middle value from the FairFace model for age estimation</i>
+				</p>
+				<div id="mae_age_chart" style="width: 100%; height: 500px;"></div>
+				<div id="gender_accuracy_chart" style="width: 100%; height: 500px;"></div>
+			  </div>
+			</details>
+			
+			<details style="display: inline-block; text-align: left; border: 1px solid rgba(255,255,255,0.2); border-radius: 10px; padding: 2rem; background: rgba(255,255,255,0.05); width: 90%; max-width: 1400px; box-sizing: border-box;">
+			  <summary style="cursor: pointer; font-size: 1.8rem; font-weight: 500; color: #fff; text-align: center;">FACE VERIFICATION BENCHMARKS <span style="font-size: 1rem; opacity: 0.7;">(click to expand)</span></summary>
+			  <div id="identification_benchmark_charts" style="display: flex; flex-direction: column; gap: 2rem; width: 100%; box-sizing: border-box;">
+				<p style="text-align: center; font-size: 0.9rem; opacity: 0.7;">
+				</p>
+				<div class="table-container-scrollable" style="max-width: 100%; overflow-x: auto; margin-top: 40px;">
+				<p style="text-align: center; font-size: 0.9rem; opacity: 0.7;">
+				  <i>Face verification performance broken down by scenario (Scn), gender, age group, and racial category. <br>Abbreviations:
+					Afr. – African, Cauc. – Caucasian, EA – East Asian, SA – South Asian.</i>
+				  </p>
+				  <table class="session-table" style="min-width: 1200px;">
+					<thead>
+					  <tr>
+						<th rowspan="2">Scenario</th>
+						<th rowspan="2">Method</th>
+						<th colspan="4">Session</th>
+						<th colspan="2">Gender</th>
+						<th colspan="3">Age group</th>
+						<th colspan="4">Race</th>
+					  </tr>
+					  <tr>
+						<th>A</th><th>C</th><th>D</th><th>E</th>
+						<th>Female</th><th>Male</th>
+						<th>18–30</th><th>31–50</th><th>51–70</th>
+						<th>Afr.</th><th>Cauc.</th><th>EA</th><th>SA</th>
+					  </tr>
+					</thead>
+					<tbody>
+					  <tr><td rowspan="2">1–10</td><td>ArcFace</td><td>0.640</td><td>0.653</td><td>0.637</td><td>0.679</td><td>0.643</td><td>0.658</td><td>0.642</td><td>0.640</td><td>0.674</td><td>0.660</td><td>0.637</td><td>0.632</td><td>0.673</td></tr>
+					  <tr><td>MagFace</td><td>0.509</td><td>0.505</td><td>0.519</td><td>0.541</td><td>0.527</td><td>0.506</td><td>0.510</td><td>0.521</td><td>0.521</td><td>0.503</td><td>0.511</td><td>0.519</td><td>0.536</td></tr>
+					  <tr><td rowspan="2">12</td><td>ArcFace</td><td>0.809</td><td>0.604</td><td>0.730</td><td>0.652</td><td>0.731</td><td>0.665</td><td>0.656</td><td>0.724</td><td>0.721</td><td>0.712</td><td>0.678</td><td>0.742</td><td>0.669</td></tr>
+					  <tr><td>MagFace</td><td>0.679</td><td>0.526</td><td>0.610</td><td>0.548</td><td>0.612</td><td>0.569</td><td>0.549</td><td>0.637</td><td>0.590</td><td>0.562</td><td>0.539</td><td>0.678</td><td>0.594</td></tr>
+					  <tr><td rowspan="2">13</td><td>ArcFace</td><td>0.642</td><td>0.498</td><td>0.628</td><td>0.572</td><td>0.606</td><td>0.564</td><td>0.567</td><td>0.580</td><td>0.614</td><td>0.588</td><td>0.555</td><td>0.591</td><td>0.614</td></tr>
+					  <tr><td>MagFace</td><td>0.530</td><td>0.445</td><td>0.527</td><td>0.492</td><td>0.526</td><td>0.472</td><td>0.479</td><td>0.511</td><td>0.509</td><td>0.491</td><td>0.460</td><td>0.523</td><td>0.530</td></tr>
+					  <tr><td rowspan="2">14</td><td>ArcFace</td><td>0.980</td><td>0.974</td><td>0.972</td><td>0.979</td><td>0.997</td><td>0.955</td><td>0.947</td><td>0.989</td><td>0.998</td><td>0.994</td><td>0.927</td><td>0.990</td><td>1.000</td></tr>
+					  <tr><td>MagFace</td><td>0.980</td><td>0.963</td><td>0.981</td><td>0.981</td><td>1.000</td><td>0.951</td><td>0.947</td><td>0.990</td><td>0.996</td><td>0.986</td><td>0.925</td><td>1.000</td><td>1.000</td></tr>
+					  <tr><td rowspan="2">15</td><td>ArcFace</td><td>0.981</td><td>0.957</td><td>0.979</td><td>0.978</td><td>0.991</td><td>0.956</td><td>0.944</td><td>0.996</td><td>0.987</td><td>0.991</td><td>0.922</td><td>0.997</td><td>0.988</td></tr>
+					  <tr><td>MagFace</td><td>0.981</td><td>0.926</td><td>0.971</td><td>0.970</td><td>0.992</td><td>0.932</td><td>0.928</td><td>0.991</td><td>0.973</td><td>0.953</td><td>0.902</td><td>1.000</td><td>0.999</td></tr>
+					  <tr><td rowspan="2">16</td><td>ArcFace</td><td>0.941</td><td>0.879</td><td>0.950</td><td>0.956</td><td>0.989</td><td>0.874</td><td>0.905</td><td>0.943</td><td>0.952</td><td>0.936</td><td>0.897</td><td>0.965</td><td>0.934</td></tr>
+					  <tr><td>MagFace</td><td>0.849</td><td>0.757</td><td>0.878</td><td>0.876</td><td>0.923</td><td>0.757</td><td>0.815</td><td>0.860</td><td>0.850</td><td>0.862</td><td>0.796</td><td>0.854</td><td>0.854</td></tr>
+					</tbody>
+				  </table>
+				</div><br><br><br><hr>
+ <div style="display: flex; flex-direction: column; gap: 2rem; width: 100%; box-sizing: border-box;">
+    <p style="text-align: center; font-size: 0.9rem; opacity: 0.7;">
+      <i>False Rejection Rate comparison across different racial groups and testing conditions using ArcFace and MagFace models.<br>
+	  <br>Half-profile and frontal images were used.</br>Click on legend to disable color.</i>
+    </p>
+      <div style="background: rgba(255,255,255,0.05); border-radius: 10px; padding: 1rem; border: 1px solid rgba(255,255,255,0.1); max-width: 600px; margin: 0 auto;">
+        <h4 style="text-align: center; color: #fff; margin-bottom: 1rem;">ArcFace FRR by Race</h4>
+        <canvas id="arcfaceRadar" width="500" height="500"></canvas>
+      </div><br>
+      <div style="background: rgba(255,255,255,0.05); border-radius: 10px; padding: 1rem; border: 1px solid rgba(255,255,255,0.1); max-width: 600px; margin: 0 auto;">
+        <h4 style="text-align: center; color: #fff; margin-bottom: 1rem;">MagFace FRR by Race</h4>
+        <canvas id="magfaceRadar" width="500" height="500"></canvas>
+      </div>
+<br>
+    <div style="background: rgba(255,255,255,0.05); border-radius: 10px; padding: 1rem; border: 1px solid rgba(255,255,255,0.1); max-width: 600px; margin: 0 auto;">
+      <h4 style="text-align: center; color: #fff; margin-bottom: 1rem;">Overall FRR Comparison</h4>
+      <canvas id="comparisonRadar" width="500" height="500"></canvas>
+    </div>
+  </div>
+			  </div>
+			</details>				
 		  </div>
 		</section>
     </section>
@@ -1263,7 +1654,745 @@ const ageOptions = {
     new google.visualization.ColumnChart(document.getElementById('race_category_chart')).draw(raceData, raceOptions);
   }
 </script>
+<script type="text/javascript">
+  google.charts.setOnLoadCallback(drawMaeAgeChart);
 
+  function drawMaeAgeChart() {
+    const data = google.visualization.arrayToDataTable([
+      ['Group', 'DeepFace', 'InsightFace', 'FairFace'],
+	  ['Female / African', 11.67,8.5,8.21],
+	  ['Male / African', 9.67,16.0,15.25],
+	  
+      ['Female / Caucasian', 13.86,14.0,21.64],
+      ['Male / Caucasian', 9.5,12.83,16.75],
+	  
+      ['Female / East Asian', 7.5,17.83,8.17],
+      ['Male / East Asian', 9.17,17.67,16.0],
+	  
+	  ['Female / South Asian', 7.17,11.33,6.0],
+      ['Male / South Asian', 8.67,14.83,10.75],
+      
+    ]);
 
+    const options = {
+      title: 'Mean Absolute Error (MAE) of Age Estimation by Gender and Race',
+      backgroundColor: 'transparent',
+      legend: { position: 'top', textStyle: { color: '#fff' } },
+      titleTextStyle: { color: '#fff' },
+      hAxis: { title: 'Demographic Group', textStyle: { color: '#fff' }, titleTextStyle: { color: '#fff' } },
+      vAxis: { title: 'MAE', minValue: 0, textStyle: { color: '#fff' }, titleTextStyle: { color: '#fff' } },
+      colors: ['#f39c12', '#27ae60', '#2980b9'],
+      annotations: {
+        alwaysOutside: true,
+        textStyle: {
+          color: '#fff',
+          auraColor: 'none',
+          fontSize: 12
+        }
+      }
+    };
+
+    new google.visualization.ColumnChart(document.getElementById('mae_age_chart')).draw(data, options);
+  }
+</script>
+<script type="text/javascript">
+  google.charts.setOnLoadCallback(drawGenderAccuracyChart);
+
+  function drawGenderAccuracyChart() {
+    const data = google.visualization.arrayToDataTable([
+	  ['Age / Race', 'DeepFace', 'InsightFace', 'FairFace'],
+	  ['18–30 / african', 0.75, 0.50, 0.80],
+	  ['18–30 / caucassian', 1.00, 0.25, 0.75],
+	  ['18–30 / east_asian', 1.00, 0.60, 1.00],
+	  ['18–30 / south_asian', 1.00, 0.40, 1.00],
+	  ['31–50 / african', 0.50, 1.00, 1.00],
+	  ['31–50 / caucassian', 0.75, 0.50, 0.75],
+	  ['31–50 / east_asian', 1.00, 0.50, 1.00],
+	  ['31–50 / south_asian', 0.80, 0.20, 0.60],
+	  ['51–70 / african', 0.50, 0.75, 1.00],
+	  ['51–70 / caucassian', 0.60, 0.60, 0.60],
+	  ['51–70 / east_asian', 0.667, 0.333, 0.333],
+	  ['51–70 / south_asian', 1.00, 0.00, 0.50]
+    ]);
+
+    const options = {
+      title: 'Gender Classification Accuracy by Age Group and Race',
+      backgroundColor: 'transparent',
+      legend: { position: 'top', textStyle: { color: '#fff' } },
+      titleTextStyle: { color: '#fff' },
+      hAxis: { title: 'Age Group / Race', textStyle: { color: '#fff' }, titleTextStyle: { color: '#fff' } },
+      vAxis: { title: 'Accuracy', minValue: 0.0, maxValue: 1.0, textStyle: { color: '#fff' }, titleTextStyle: { color: '#fff' } },
+      colors: ['#e67e22', '#3498db', '#9b59b6'],
+      annotations: {
+        alwaysOutside: true,
+        textStyle: {
+          color: '#fff',
+          auraColor: 'none',
+          fontSize: 12
+        }
+      }
+    };
+
+    new google.visualization.ColumnChart(document.getElementById('gender_accuracy_chart')).draw(data, options);
+  }
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+<script type="text/javascript">
+  google.charts.setOnLoadCallback(drawFRRRadars);
+
+  function drawFRRRadars() {
+    // Raw FRR data from JSON
+    const frrData = {
+      "african": { all_arcface: 0.121, all_magface: 0.331, glasses_arcface: 0.179, glasses_magface: 0.330, lowlight_arcface: 0.167, lowlight_magface: 0.333 },
+      "caucasian": { all_arcface: 0.119, all_magface: 0.317, glasses_arcface: 0.224, glasses_magface: 0.314, lowlight_arcface: 0.175, lowlight_magface: 0.313 },
+      "east_asian": { all_arcface: 0.146, all_magface: 0.286, glasses_arcface: 0.194, glasses_magface: 0.319, lowlight_arcface: 0.208, lowlight_magface: 0.343 },
+      "south_asian": { all_arcface: 0.098, all_magface: 0.252, glasses_arcface: 0.139, glasses_magface: 0.278, lowlight_arcface: 0.111, lowlight_magface: 0.306 }
+    };
+
+    const races = ['African', 'Caucasian', 'East Asian', 'South Asian'];
+    const conditions = ['All Images', 'Glasses', 'Low Light'];
+    
+    // ArcFace Radar
+    const arcfaceCtx = document.getElementById('arcfaceRadar').getContext('2d');
+    new Chart(arcfaceCtx, {
+      type: 'radar',
+      data: {
+        labels: races,
+        datasets: [{
+          label: 'All Images',
+          data: [
+            frrData.african.all_arcface,
+            frrData.caucasian.all_arcface,
+            frrData.east_asian.all_arcface,
+            frrData.south_asian.all_arcface
+          ],
+          borderColor: '#3498db',
+          backgroundColor: 'rgba(52, 152, 219, 0.2)',
+          pointBackgroundColor: '#3498db'
+        }, {
+          label: 'Glasses',
+          data: [
+            frrData.african.glasses_arcface,
+            frrData.caucasian.glasses_arcface,
+            frrData.east_asian.glasses_arcface,
+            frrData.south_asian.glasses_arcface
+          ],
+          borderColor: '#e74c3c',
+          backgroundColor: 'rgba(231, 76, 60, 0.2)',
+          pointBackgroundColor: '#e74c3c'
+        }, {
+          label: 'Low Light',
+          data: [
+            frrData.african.lowlight_arcface,
+            frrData.caucasian.lowlight_arcface,
+            frrData.east_asian.lowlight_arcface,
+            frrData.south_asian.lowlight_arcface
+          ],
+          borderColor: '#f39c12',
+          backgroundColor: 'rgba(243, 156, 18, 0.2)',
+          pointBackgroundColor: '#f39c12'
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {
+            labels: { color: '#fff' }
+          }
+        },
+        scales: {
+          r: {
+            beginAtZero: true,
+            max: 0.4,
+            ticks: { color: '#fff' },
+            grid: { color: 'rgba(255,255,255,0.3)' },
+            pointLabels: { color: '#fff' }
+          }
+        }
+      }
+    });
+
+    // MagFace Radar
+    const magfaceCtx = document.getElementById('magfaceRadar').getContext('2d');
+    new Chart(magfaceCtx, {
+      type: 'radar',
+      data: {
+        labels: races,
+        datasets: [{
+          label: 'All Images',
+          data: [
+            frrData.african.all_magface,
+            frrData.caucasian.all_magface,
+            frrData.east_asian.all_magface,
+            frrData.south_asian.all_magface
+          ],
+          borderColor: '#3498db',
+          backgroundColor: 'rgba(52, 152, 219, 0.2)',
+          pointBackgroundColor: '#3498db'
+        }, {
+          label: 'Glasses',
+          data: [
+            frrData.african.glasses_magface,
+            frrData.caucasian.glasses_magface,
+            frrData.east_asian.glasses_magface,
+            frrData.south_asian.glasses_magface
+          ],
+          borderColor: '#e74c3c',
+          backgroundColor: 'rgba(231, 76, 60, 0.2)',
+          pointBackgroundColor: '#e74c3c'
+        }, {
+          label: 'Low Light',
+          data: [
+            frrData.african.lowlight_magface,
+            frrData.caucasian.lowlight_magface,
+            frrData.east_asian.lowlight_magface,
+            frrData.south_asian.lowlight_magface
+          ],
+          borderColor: '#f39c12',
+          backgroundColor: 'rgba(243, 156, 18, 0.2)',
+          pointBackgroundColor: '#f39c12'
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {
+            labels: { color: '#fff' }
+          }
+        },
+        scales: {
+          r: {
+            beginAtZero: true,
+            max: 0.4,
+            ticks: { color: '#fff' },
+            grid: { color: 'rgba(255,255,255,0.3)' },
+            pointLabels: { color: '#fff' }
+          }
+        }
+      }
+    });
+
+    // Comparison Radar (ArcFace vs MagFace average)
+    const compCtx = document.getElementById('comparisonRadar').getContext('2d');
+    new Chart(compCtx, {
+      type: 'radar',
+      data: {
+        labels: conditions,
+        datasets: [{
+          label: 'ArcFace', //all glasses lowlight
+          data: [0.121, 0.184, 0.165], // średnie globalne 
+          borderColor: '#3498db',
+          backgroundColor: 'rgba(52, 152, 219, 0.2)',
+          pointBackgroundColor: '#3498db'
+        }, {
+          label: 'MagFace',
+          data: [0.296, 0.310, 0.324], // średnie globalne
+          borderColor: '#e74c3c',
+          backgroundColor: 'rgba(231, 76, 60, 0.2)',
+          pointBackgroundColor: '#e74c3c'
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {
+            labels: { color: '#fff' }
+          }
+        },
+        scales: {
+          r: {
+            beginAtZero: true,
+            max: 0.4,
+            ticks: { color: '#fff' },
+            grid: { color: 'rgba(255,255,255,0.3)' },
+            pointLabels: { color: '#fff' }
+          }
+        }
+      }
+    });
+  }
+
+  // Wywołaj po załadowaniu strony
+  document.addEventListener('DOMContentLoaded', function() {
+    setTimeout(drawFRRRadars, 1000); // Opóźnienie żeby Chart.js się załadował
+  });
+</script>
+<script>
+        // Data from JSON files
+        const similarityData = [
+            {frame: 0, similarity_magface: 0.80575031042099, similarity_arcface: 0.8491894602775574},
+            {frame: 10, similarity_magface: 0.7027199268341064, similarity_arcface: 0.8189080357551575},
+            {frame: 20, similarity_magface: 0.7509670257568359, similarity_arcface: 0.8105201125144958},
+            {frame: 30, similarity_magface: 0.6091299653053284, similarity_arcface: 0.8115330934524536},
+            {frame: 40, similarity_magface: 0.16402949392795563, similarity_arcface: 0.04032021760940552},
+            {frame: 50, similarity_magface: 0.16000419855117798, similarity_arcface: 0.011845264583826065},
+            {frame: 60, similarity_magface: 0.2201308161020279, similarity_arcface: 0.5526760816574097},
+            {frame: 70, similarity_magface: 0.23904670774936676, similarity_arcface: 0.7397865056991577},
+            {frame: 80, similarity_magface: 0.5820692181587219, similarity_arcface: 0.5770879983901978},
+            {frame: 90, similarity_magface: 0.5803521871566772, similarity_arcface: 0.4990750551223755},
+            {frame: 100, similarity_magface: 0.6193864345550537, similarity_arcface: 0.7759434580802917},
+            {frame: 110, similarity_magface: 0.24228234589099884, similarity_arcface: 0.8114142417907715},
+            {frame: 120, similarity_magface: 0.19308699667453766, similarity_arcface: 0.5948715209960938},
+            {frame: 130, similarity_magface: 0.07103269547224045, similarity_arcface: -0.08646093308925629},
+            {frame: 140, similarity_magface: 0.10805542021989822, similarity_arcface: 0.0039606522768735886},
+            {frame: 150, similarity_magface: 0.09858914464712143, similarity_arcface: -0.05968998745083809},
+            {frame: 160, similarity_magface: 0.11334654688835144, similarity_arcface: 0.3507298529148102},
+            {frame: 170, similarity_magface: 0.1144397109746933, similarity_arcface: 0.6622787714004517},
+            {frame: 180, similarity_magface: 0.4012579619884491, similarity_arcface: 0.6562402248382568},
+            {frame: 190, similarity_magface: 0.5527969002723694, similarity_arcface: 0.5539870262145996},
+            {frame: 200, similarity_magface: 0.7489105463027954, similarity_arcface: 0.8142821788787842},
+            {frame: 210, similarity_magface: 0.67528235912323, similarity_arcface: 0.7551460266113281},
+            {frame: 220, similarity_magface: 0.594817578792572, similarity_arcface: 0.5254355669021606},
+            {frame: 230, similarity_magface: 0.4073798954486847, similarity_arcface: 0.6141983270645142},
+            {frame: 240, similarity_magface: 0.12101922929286957, similarity_arcface: 0.10576219856739044},
+            {frame: 250, similarity_magface: 0.13359905779361725, similarity_arcface: -0.0012367404997348785},
+            {frame: 260, similarity_magface: 0.1571008861064911, similarity_arcface: 0.43468642234802246},
+            {frame: 270, similarity_magface: 0.14306612312793732, similarity_arcface: 0.5775091052055359},
+            {frame: 280, similarity_magface: 0.25891995429992676, similarity_arcface: 0.43888136744499207},
+            {frame: 290, similarity_magface: 0.21333526074886322, similarity_arcface: 0.4167270064353943},
+            {frame: 310, similarity_magface: 0.4758305847644806, similarity_arcface: 0.2398875653743744},
+            {frame: 320, similarity_magface: 0.32339808344841003, similarity_arcface: 0.39848026633262634},
+            {frame: 330, similarity_magface: 0.2491626888513565, similarity_arcface: 0.3867647349834442},
+            {frame: 340, similarity_magface: 0.1092403456568718, similarity_arcface: 0.09445119649171829},
+            {frame: 350, similarity_magface: 0.2416124939918518, similarity_arcface: 0.15977691113948822},
+            {frame: 360, similarity_magface: 0.19523181021213531, similarity_arcface: 0.5566059947013855},
+            {frame: 370, similarity_magface: 0.062057919800281525, similarity_arcface: 0.598064661026001},
+            {frame: 380, similarity_magface: 0.3452567756175995, similarity_arcface: 0.6451500654220581},
+            {frame: 390, similarity_magface: 0.6601635217666626, similarity_arcface: 0.599098801612854},
+            {frame: 400, similarity_magface: 0.6513979434967041, similarity_arcface: 0.7160011529922485},
+            {frame: 410, similarity_magface: 0.7135083675384521, similarity_arcface: 0.818809986114502},
+            {frame: 420, similarity_magface: 0.6637537479400635, similarity_arcface: 0.8310801386833191},
+            {frame: 430, similarity_magface: 0.6659488081932068, similarity_arcface: 0.8334087133407593}
+        ];
+
+        const poseData = {
+            0: {pitch: -2.118593048406996, yaw: -52.16032971651502, roll: 0.018647948480468555},
+            10: {pitch: -2.8836772950397656, yaw: -53.928598220951386, roll: 0.044625934330640694},
+            20: {pitch: -4.454435098801971, yaw: -55.68862678176954, roll: 0.08941418248446387},
+            30: {pitch: 1.513297464186602, yaw: -58.65223392346352, roll: 0.20591643516454441},
+            40: {pitch: 10.44994300481675, yaw: -58.761366735432716, roll: 0.3168461703289181},
+            50: {pitch: 23.182113108778804, yaw: -52.579926086366264, roll: -0.23190469793347587},
+            60: {pitch: -2.8052081832704405, yaw: -50.96918809417923, roll: -0.42237611624418636},
+            70: {pitch: -1.26479185871145, yaw: -10.302250050252926, roll: -0.029330676039631264},
+            80: {pitch: -3.2632413615116516, yaw: -49.644000716222365, roll: 0.4398389546461277},
+            90: {pitch: -9.213027070481557, yaw: -54.317350066890604, roll: 0.3479962000126808},
+            100: {pitch: -13.822404911828684, yaw: -63.2993116935563, roll: -0.2489102854470312},
+            110: {pitch: -3.076179035097233, yaw: -78.6986663894515, roll: 0.007146662674029227},
+            120: {pitch: 9.965032514920392, yaw: -81.23948912280024, roll: -0.17027337660755404},
+            130: {pitch: 17.030428929884877, yaw: -59.690180670967486, roll: 0.3930401864373444},
+            140: {pitch: 22.826232416978065, yaw: -50.00314808220707, roll: 0.325220370779241},
+            150: {pitch: 9.63244360704997, yaw: -60.113072059850786, roll: -0.9356313715373077},
+            160: {pitch: -4.124618618164537, yaw: -54.119172800416926, roll: -0.5298265793129651},
+            170: {pitch: -1.7767062280754278, yaw: -7.942515945756586, roll: 0.10345001317763161},
+            180: {pitch: 4.668672466434657, yaw: -46.597074387556745, roll: 0.19807076224848327},
+            190: {pitch: -5.311691907529696, yaw: -54.901602235808966, roll: 0.22870639972366572},
+            200: {pitch: -10.495234963556006, yaw: -57.51375580653256, roll: -0.40017294303794426},
+            210: {pitch: -9.155996703503991, yaw: -58.90868274054036, roll: -0.4040359388424694},
+            220: {pitch: 11.34670584989933, yaw: -52.82295624919727, roll: 0.25814610687181155},
+            230: {pitch: 5.403772392342753, yaw: -18.252496625310535, roll: -0.03796433307242651},
+            240: {pitch: 13.233036422596479, yaw: -49.90849705388805, roll: -0.44695053017326797},
+            250: {pitch: 12.664909575674885, yaw: -52.419135927592855, roll: 0.4236911355324612},
+            260: {pitch: 1.3181705352936472, yaw: -80.36670928121909, roll: 0.19137238251935437},
+            270: {pitch: -19.556894496811452, yaw: -75.68096604805108, roll: -0.0340717853525045},
+            280: {pitch: -29.7349218793437, yaw: -74.76897960480872, roll: 0.20545941257878433},
+            290: {pitch: -28.93043773314954, yaw: -65.11632073420986, roll: -0.6520587926849409},
+            310: {pitch: 16.531203665394475, yaw: -44.167202948650306, roll: 0.4092690242078239},
+            320: {pitch: 14.399981005461663, yaw: -26.623502983600588, roll: 0.05405838200264597},
+            330: {pitch: 17.076465458132322, yaw: -33.57448467691476, roll: -0.22477508896859616},
+            340: {pitch: 15.397505902907907, yaw: -48.19789135693302, roll: -0.7010552164485039},
+            350: {pitch: 5.498859554296002, yaw: -54.96074160368321, roll: 0.16138843583053766},
+            360: {pitch: -10.187428874418897, yaw: -74.23980662525626, roll: 0.3485380690184997},
+            370: {pitch: -22.907350784619062, yaw: -86.38547260805628, roll: 0.15041441565762645},
+            380: {pitch: -19.741929815347074, yaw: -70.90439033077833, roll: -0.13166294380153334},
+            390: {pitch: -13.280335979636462, yaw: -57.186353433129284, roll: -0.258488658798083},
+            400: {pitch: 4.745841025717771, yaw: -53.823660469523226, roll: 0.1537253752778433},
+            410: {pitch: 5.486452082091635, yaw: -48.36193733975865, roll: -0.026536854343581023},
+            420: {pitch: 4.4633834485169785, yaw: -51.12825767523821, roll: -0.015532636735494394},
+            430: {pitch: 4.42688563447994, yaw: -48.34298364515165, roll: -0.035043803796470104}
+        };
+
+        const faceBoxData = {
+            0: [377, 745, 371, 525], 10: [368, 753, 374, 520], 20: [352, 743, 375, 530],
+            30: [331, 707, 355, 490], 40: [328, 698, 365, 424], 50: [364, 708, 360, 371],
+            60: [394, 684, 368, 464], 70: [412, 745, 376, 535], 80: [404, 896, 391, 516],
+            90: [355, 960, 386, 458], 100: [287, 882, 377, 514], 110: [264, 749, 388, 557],
+            120: [268, 687, 373, 501], 130: [298, 681, 377, 443], 140: [326, 701, 374, 370],
+            150: [353, 680, 383, 418], 160: [377, 680, 371, 470], 170: [381, 732, 385, 546],
+            180: [361, 825, 430, 586], 190: [302, 968, 383, 460], 200: [206, 852, 391, 546],
+            210: [229, 907, 388, 497], 220: [321, 898, 394, 502], 230: [367, 755, 407, 550],
+            240: [354, 712, 382, 469], 250: [296, 692, 376, 437], 260: [261, 700, 362, 464],
+            270: [216, 761, 363, 511], 280: [220, 842, 400, 561], 290: [263, 956, 424, 490],
+            310: [403, 962, 428, 496], 320: [447, 841, 430, 549], 330: [464, 781, 407, 527],
+            340: [418, 720, 386, 471], 350: [335, 699, 375, 448], 360: [275, 714, 378, 499],
+            370: [249, 776, 403, 559], 380: [238, 866, 411, 557], 390: [288, 962, 380, 480],
+            400: [340, 833, 393, 556], 410: [326, 741, 396, 559], 420: [339, 727, 387, 540],
+            430: [346, 725, 394, 555]
+        };
+
+        // Elements
+        const video = document.getElementById('videoPlayer');
+        const canvas = document.getElementById('overlayCanvas');
+        const ctx = canvas.getContext('2d');
+        const frameSlider = document.getElementById('frameSlider');
+        const currentFrameSpan = document.getElementById('currentFrame');
+        const currentTimeSpan = document.getElementById('currentTime');
+        const totalFramesSpan = document.getElementById('totalFrames');
+        const arcfaceScore = document.getElementById('arcfaceScore');
+        const magfaceScore = document.getElementById('magfaceScore');
+        const arcfaceFill = document.getElementById('arcfaceFill');
+        const magfaceFill = document.getElementById('magfaceFill');
+        const pitchValue = document.getElementById('pitchValue');
+        const yawValue = document.getElementById('yawValue');
+        const rollValue = document.getElementById('rollValue');
+        const statusText = document.getElementById('statusText');
+        const toggleButtons = document.querySelectorAll('.toggle-btn');
+
+        let currentFrameIndex = 0;
+        let activeLayers = new Set(['scores']);
+        let chart;
+
+        // Initialize
+        function init() {
+            setupCanvas();
+            setupChart();
+            setupEventListeners();
+            updateFrame(0);
+            totalFramesSpan.textContent = similarityData.length;
+            frameSlider.max = similarityData.length - 1;
+        }
+
+		function setupCanvas() {
+			function resizeCanvas() {
+				const scale = video.clientHeight / video.videoHeight;
+				canvas.width = video.videoWidth;
+				canvas.height = video.videoHeight;
+
+				canvas.style.width = video.videoWidth * scale + 'px';
+				canvas.style.height = video.clientHeight + 'px';
+			}
+
+			resizeCanvas();
+			window.addEventListener('resize', resizeCanvas);
+			video.addEventListener('loadedmetadata', resizeCanvas);
+		}
+
+        function setupChart() {
+            const chartCtx = document.getElementById('similarityChart').getContext('2d');
+            chart = new Chart(chartCtx, {
+                type: 'line',
+                data: {
+                    labels: similarityData.map(d => d.frame),
+                    datasets: [{
+                        label: 'ArcFace',
+                        data: similarityData.map(d => d.similarity_arcface),
+                        borderColor: '#3498db',
+                        backgroundColor: 'rgba(52, 152, 219, 0.1)',
+                        tension: 0.4,
+                        pointRadius: 3,
+                        pointHoverRadius: 6
+                    }, {
+                        label: 'MagFace',
+                        data: similarityData.map(d => d.similarity_magface),
+                        borderColor: '#e74c3c',
+                        backgroundColor: 'rgba(231, 76, 60, 0.1)',
+                        tension: 0.4,
+                        pointRadius: 3,
+                        pointHoverRadius: 6
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            labels: { color: '#fff' }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            title: { display: true, text: 'Frame', color: '#fff' },
+                            ticks: { color: '#fff' },
+                            grid: { color: 'rgba(255,255,255,0.1)' }
+                        },
+                        y: {
+                            title: { display: true, text: 'Similarity Score', color: '#fff' },
+                            ticks: { color: '#fff' },
+                            grid: { color: 'rgba(255,255,255,0.1)' },
+                            min: -0.1,
+                            max: 1.0
+                        }
+                    },
+                    interaction: {
+                        intersect: false,
+                        mode: 'index'
+                    }
+                }
+            });
+        }
+
+        function setupEventListeners() {
+            frameSlider.addEventListener('input', (e) => {
+                updateFrame(parseInt(e.target.value));
+            });
+
+            toggleButtons.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const layer = e.target.dataset.layer;
+                    
+                    if (activeLayers.has(layer)) {
+                        activeLayers.delete(layer);
+                        e.target.classList.remove('active');
+                    } else {
+                        activeLayers.add(layer);
+                        e.target.classList.add('active');
+                    }
+                    
+                    drawOverlay();
+                });
+            });
+
+            video.addEventListener('loadedmetadata', () => {
+                statusText.textContent = 'Video Loaded';
+            });
+        }
+
+        function updateFrame(frameIndex) {
+            currentFrameIndex = frameIndex;
+            const frameData = similarityData[frameIndex];
+            
+            if (!frameData) return;
+			video.currentTime = frameData.frame / 30; 
+            // Update frame info
+            currentFrameSpan.textContent = frameData.frame;
+            currentTimeSpan.textContent = (frameData.frame / 30).toFixed(2); 
+            frameSlider.value = frameIndex;
+
+            // Update scores
+            const arcfaceVal = frameData.similarity_arcface;
+            const magfaceVal = frameData.similarity_magface;
+            
+            arcfaceScore.textContent = arcfaceVal.toFixed(3);
+            magfaceScore.textContent = magfaceVal.toFixed(3);
+            
+            // Update score bars (normalize to 0-100%)
+            const arcfacePercent = Math.max(0, Math.min(100, (arcfaceVal + 0.1) * 90.9)); // Scale -0.1 to 1.0 → 0% to 100%
+            const magfacePercent = Math.max(0, Math.min(100, (magfaceVal + 0.1) * 90.9));
+            
+            arcfaceFill.style.width = arcfacePercent + '%';
+            magfaceFill.style.width = magfacePercent + '%';
+
+            // Update pose data
+            const pose = poseData[frameData.frame];
+            if (pose) {
+                pitchValue.textContent = pose.pitch.toFixed(1) + '°';
+                yawValue.textContent = pose.yaw.toFixed(1) + '°';
+                rollValue.textContent = pose.roll.toFixed(1) + '°';
+                statusText.textContent = 'Face Detected';
+                statusText.className = 'face-detected';
+            } else {
+                pitchValue.textContent = '--°';
+                yawValue.textContent = '--°';
+                rollValue.textContent = '--°';
+                statusText.textContent = 'No Face';
+                statusText.className = 'no-face';
+            }
+
+            // Update chart highlight
+            updateChartHighlight(frameIndex);
+            
+            // Draw overlay
+            drawOverlay();
+        }
+
+        function updateChartHighlight(frameIndex) {
+            // Remove previous highlight
+            chart.data.datasets.forEach(dataset => {
+                dataset.pointBackgroundColor = undefined;
+                dataset.pointRadius = 3;
+            });
+
+            // Add highlight to current frame
+            chart.data.datasets[0].pointBackgroundColor = chart.data.labels.map((_, i) => 
+                i === frameIndex ? '#3498db' : undefined
+            );
+            chart.data.datasets[0].pointRadius = chart.data.labels.map((_, i) => 
+                i === frameIndex ? 8 : 3
+            );
+            
+            chart.data.datasets[1].pointBackgroundColor = chart.data.labels.map((_, i) => 
+                i === frameIndex ? '#e74c3c' : undefined
+            );
+            chart.data.datasets[1].pointRadius = chart.data.labels.map((_, i) => 
+                i === frameIndex ? 8 : 3
+            );
+
+            chart.update('none');
+        }
+
+        function drawOverlay() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            const frameData = similarityData[currentFrameIndex];
+            if (!frameData) return;
+
+            const faceBox = faceBoxData[frameData.frame];
+            const pose = poseData[frameData.frame];
+            
+            // Calculate scale factors
+			
+            const scaleX = (canvas.width / 540) * 0.36;
+			const scaleY = (canvas.height / 960) * 0.36;
+
+            if (activeLayers.has('facebox') && faceBox) {
+                drawFaceBox(faceBox, scaleX, scaleY);
+            }
+
+            if (activeLayers.has('pose') && pose) {
+                drawPoseIndicator(faceBox, pose, scaleX, scaleY);
+            }
+
+            if (activeLayers.has('scores')) {
+                drawScoreOverlay(frameData);
+            }
+        }
+
+        function drawFaceBox(box, scaleX, scaleY) {
+            const [x, y, w, h] = box;
+            const scaledX = x * scaleX * 1.36;
+            const scaledY = y * scaleY * 1.36;
+            const scaledW = w * scaleX * 1.36;
+            const scaledH = h * scaleY * 1.36;
+
+            ctx.strokeStyle = '#00ff00';
+            ctx.lineWidth = 3;
+            ctx.setLineDash([]);
+            ctx.strokeRect(scaledX, scaledY, scaledW, scaledH);
+
+            // Face box label
+            ctx.fillStyle = 'rgba(0, 255, 0, 0.8)';
+            ctx.fillRect(scaledX, scaledY - 25, 80, 25);
+            ctx.fillStyle = '#000';
+            ctx.font = '14px Arial';
+            ctx.fillText('Face', scaledX + 5, scaledY - 8);
+        }
+
+        function drawPoseIndicator(box, pose, scaleX, scaleY) {
+            if (!box) return;
+            
+            const [x, y, w, h] = box;
+            const centerX = (x + w/2) * scaleX;
+            const centerY = (y + h/2) * scaleY;
+            
+            // Draw pose vectors
+            ctx.strokeStyle = '#ff0000';
+            ctx.lineWidth = 3;
+            ctx.setLineDash([]);
+            
+            // Pitch (red line - up/down)
+            const pitchLength = Math.sin(pose.pitch * Math.PI / 180) * 50;
+            ctx.beginPath();
+            ctx.moveTo(centerX, centerY);
+            ctx.lineTo(centerX, centerY - pitchLength);
+            ctx.stroke();
+            
+            // Yaw (blue line - left/right)
+            ctx.strokeStyle = '#0000ff';
+            const yawLength = Math.sin(pose.yaw * Math.PI / 180) * 50;
+            ctx.beginPath();
+            ctx.moveTo(centerX, centerY);
+            ctx.lineTo(centerX + yawLength, centerY);
+            ctx.stroke();
+            
+            // Roll (green arc)
+            ctx.strokeStyle = '#00ff00';
+            ctx.beginPath();
+            ctx.arc(centerX, centerY, 30, 0, pose.roll * Math.PI / 180);
+            ctx.stroke();
+        }
+
+        function drawScoreOverlay(frameData) {
+            const arcfaceScore = frameData.similarity_arcface;
+            const magfaceScore = frameData.similarity_magface;
+            
+            // Score display in top-left corner
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.7)';
+            ctx.fillRect(10, 10, 200, 80);
+            
+            ctx.fillStyle = '#3498db';
+            ctx.font = 'bold 16px Arial';
+            ctx.fillText('ArcFace: ' + arcfaceScore.toFixed(3), 20, 35);
+            
+            ctx.fillStyle = '#e74c3c';
+            ctx.fillText('MagFace: ' + magfaceScore.toFixed(3), 20, 60);
+            
+            // Score bars
+            const barWidth = 150;
+            const barHeight = 8;
+            
+            // ArcFace bar
+            ctx.fillStyle = 'rgba(52, 152, 219, 0.3)';
+            ctx.fillRect(20, 40, barWidth, barHeight);
+            ctx.fillStyle = '#3498db';
+            const arcfaceWidth = Math.max(0, Math.min(barWidth, (arcfaceScore + 0.1) * barWidth / 1.1));
+            ctx.fillRect(20, 40, arcfaceWidth, barHeight);
+            
+            // MagFace bar
+            ctx.fillStyle = 'rgba(231, 76, 60, 0.3)';
+            ctx.fillRect(20, 65, barWidth, barHeight);
+            ctx.fillStyle = '#e74c3c';
+            const magfaceWidth = Math.max(0, Math.min(barWidth, (magfaceScore + 0.1) * barWidth / 1.1));
+            ctx.fillRect(20, 65, magfaceWidth, barHeight);
+        }
+
+        // Keyboard controls
+        document.addEventListener('keydown', (e) => {
+            switch(e.key) {
+                case 'ArrowLeft':
+                    if (currentFrameIndex > 0) {
+                        updateFrame(currentFrameIndex - 1);
+                    }
+                    break;
+                case 'ArrowRight':
+                    if (currentFrameIndex < similarityData.length - 1) {
+                        updateFrame(currentFrameIndex + 1);
+                    }
+                    break;
+                case ' ':
+                    e.preventDefault();
+                    // Toggle play/pause (if video controls needed)
+                    break;
+            }
+        });
+
+        // Auto-play functionality
+        let autoPlay = false;
+        let autoPlayInterval;
+
+        function toggleAutoPlay() {
+            autoPlay = !autoPlay;
+            if (autoPlay) {
+                autoPlayInterval = setInterval(() => {
+                    if (currentFrameIndex < similarityData.length - 1) {
+                        updateFrame(currentFrameIndex + 1);
+                    } else {
+                        updateFrame(0); // Loop back to start
+                    }
+                }, 200); // 5 FPS playback
+            } else {
+                clearInterval(autoPlayInterval);
+            }
+        }
+
+        // Add auto-play button (optional)
+        const autoPlayBtn = document.createElement('button');
+        autoPlayBtn.className = 'toggle-btn';
+        autoPlayBtn.textContent = '▶️ Auto Play';
+        autoPlayBtn.addEventListener('click', toggleAutoPlay);
+        document.querySelector('.toggle-buttons').appendChild(autoPlayBtn);
+
+        // Initialize when page loads
+        window.addEventListener('load', init);
+		</script>
 </body>
 </html>
