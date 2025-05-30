@@ -1701,19 +1701,11 @@ const ageOptions = {
 
   function drawGenderAccuracyChart() {
     const data = google.visualization.arrayToDataTable([
-	  ['Age / Race', 'DeepFace', 'InsightFace', 'FairFace'],
-	  ['18–30 / african', 0.75, 0.50, 0.80],
-	  ['18–30 / caucassian', 1.00, 0.25, 0.75],
-	  ['18–30 / east_asian', 1.00, 0.60, 1.00],
-	  ['18–30 / south_asian', 1.00, 0.40, 1.00],
-	  ['31–50 / african', 0.50, 1.00, 1.00],
-	  ['31–50 / caucassian', 0.75, 0.50, 0.75],
-	  ['31–50 / east_asian', 1.00, 0.50, 1.00],
-	  ['31–50 / south_asian', 0.80, 0.20, 0.60],
-	  ['51–70 / african', 0.50, 0.75, 1.00],
-	  ['51–70 / caucassian', 0.60, 0.60, 0.60],
-	  ['51–70 / east_asian', 0.667, 0.333, 0.333],
-	  ['51–70 / south_asian', 1.00, 0.00, 0.50]
+	  ['Race', 'DeepFace', 'FairFace', 'InsightFace'],
+	  ['African', 0.583, 0.923, 0.750],
+	  ['Caucassian', 0.769, 0.692, 0.462],
+	  ['East_asian', 0.917, 0.833, 0.500],
+	  ['South_asian', 0.917, 0.750, 0.250],
     ]);
 
     const options = {
