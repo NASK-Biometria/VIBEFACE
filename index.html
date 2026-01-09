@@ -1516,21 +1516,10 @@ hAxis: {
   titleTextStyle: { color: '#fff' },
   gridlines: { color: 'rgba(255,255,255,0.1)' },
 
-  viewWindow: { min: -26, max: 26 },
+  format: '0;0',
 
-  ticks: [
-    { v: -25, f: '25' },
-    { v: -20, f: '20' },
-    { v: -15, f: '15' },
-    { v: -10, f: '10' },
-    { v: -5,  f: '5'  },
-    { v: 0,   f: '0'  },
-    { v: 5,   f: '5'  },
-    { v: 10,  f: '10' },
-    { v: 15,  f: '15' },
-    { v: 20,  f: '20' },
-    { v: 25,  f: '25' }
-  ]
+  viewWindowMode: 'explicit',
+  viewWindow: { min: -26, max: 26 },
 },
 
   vAxis: {
